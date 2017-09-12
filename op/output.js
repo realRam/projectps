@@ -1685,11 +1685,11 @@ var PS = {};
       Control_Monad_Eff_JQuery.addClass("cube")(v6)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateX(-100px) translateY(-100px) translateZ(100px)", 
-          backgroundColor: "#49f441"
+          backgroundColor: "#FDF900"
       })(v)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateX(-100px) translateY(-100px) translateZ(-100px)", 
-          backgroundColor: "#457ef9"
+          backgroundColor: "#01D6D3"
       })(v1)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateY(-100px) rotateY(90deg)", 
@@ -1697,15 +1697,15 @@ var PS = {};
       })(v2)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateY(-100px) translateX(-200px) rotateY(90deg)", 
-          backgroundColor: "#ffaa19"
+          backgroundColor: "#FFFFFF"
       })(v3)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateX(-100px) translateY(-200px) rotateX(90deg)", 
-          backgroundColor: "#f7fff7"
+          backgroundColor: "#082090"
       })(v4)();
       Control_Monad_Eff_JQuery.css({
           transform: "translateX(-100px) rotateX(90deg)", 
-          backgroundColor: "#ffff44"
+          backgroundColor: "#000000"
       })(v5)();
       Control_Monad_Eff_JQuery.css({
           position: "relative", 

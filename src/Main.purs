@@ -63,12 +63,12 @@ drawCube = do
 
   css {
   	transform : "translateX(-100px) translateY(-100px) translateZ(100px)",
-    backgroundColor: "#49f441"
+    backgroundColor: "#FDF900"
   } frontFace
 
   css {
   	transform : "translateX(-100px) translateY(-100px) translateZ(-100px)",
-    backgroundColor: "#457ef9"
+    backgroundColor: "#01D6D3"
   } backFace
   css {
   	transform : "translateY(-100px) rotateY(90deg)",
@@ -76,15 +76,15 @@ drawCube = do
   } rightFace
   css {
     transform : "translateY(-100px) translateX(-200px) rotateY(90deg)",
-    backgroundColor: "#ffaa19"
+    backgroundColor: "#FFFFFF"
   } leftFace
   css {
     transform : "translateX(-100px) translateY(-200px) rotateX(90deg)",
-    backgroundColor: "#f7fff7"
+    backgroundColor: "#082090"
   } topFace
   css {
     transform : "translateX(-100px) rotateX(90deg)",
-    backgroundColor: "#ffff44"
+    backgroundColor: "#000000"
   } bottomFace
 
   css {
