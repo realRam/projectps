@@ -1,6 +1,6 @@
 "use strict";
 
-exports.peekSTArrayImpl = function (xs) {
+exports.peekSTArray = function (xs) {
   return function (i) {
     return function () {
       return xs[i];
@@ -8,7 +8,7 @@ exports.peekSTArrayImpl = function (xs) {
   };
 };
 
-exports.pokeSTArrayImpl = function (xs) {
+exports.pokeSTArray = function (xs) {
   return function (i) {
     return function (a) {
       return function () {

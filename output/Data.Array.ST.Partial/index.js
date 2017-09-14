@@ -5,13 +5,7 @@ var Control_Monad_Eff = require("../Control.Monad.Eff");
 var Control_Monad_ST = require("../Control.Monad.ST");
 var Data_Array_ST = require("../Data.Array.ST");
 var Data_Unit = require("../Data.Unit");
-var pokeSTArray = function (dictPartial) {
-    return $foreign.pokeSTArrayImpl;
-};
-var peekSTArray = function (dictPartial) {
-    return $foreign.peekSTArrayImpl;
-};
 module.exports = {
-    peekSTArray: peekSTArray, 
-    pokeSTArray: pokeSTArray
+    peekSTArray: $foreign.peekSTArray, 
+    pokeSTArray: $foreign.pokeSTArray
 };

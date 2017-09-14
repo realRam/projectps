@@ -86,7 +86,7 @@ var toEnumWithDefaults = function (dictBoundedEnum) {
                     };
                     return t;
                 };
-                throw new Error("Failed pattern match at Data.Enum line 272, column 28 - line 274, column 56: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Enum line 260, column 28 - line 262, column 56: " + [ v.constructor.name ]);
             };
         };
     };
@@ -122,7 +122,7 @@ var enumOrdering = new Enum(function () {
     if (v instanceof Data_Ordering.GT) {
         return new Data_Maybe.Just(Data_Ordering.EQ.value);
     };
-    throw new Error("Failed pattern match at Data.Enum line 84, column 1 - line 84, column 39: " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Data.Enum line 72, column 1 - line 72, column 39: " + [ v.constructor.name ]);
 }, function (v) {
     if (v instanceof Data_Ordering.LT) {
         return new Data_Maybe.Just(Data_Ordering.EQ.value);
@@ -133,7 +133,7 @@ var enumOrdering = new Enum(function () {
     if (v instanceof Data_Ordering.GT) {
         return Data_Maybe.Nothing.value;
     };
-    throw new Error("Failed pattern match at Data.Enum line 84, column 1 - line 84, column 39: " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Data.Enum line 72, column 1 - line 72, column 39: " + [ v.constructor.name ]);
 });
 var enumMaybe = function (dictBoundedEnum) {
     return new Enum(function () {
@@ -145,7 +145,7 @@ var enumMaybe = function (dictBoundedEnum) {
         if (v instanceof Data_Maybe.Just) {
             return Data_Maybe.Just.create(pred(dictBoundedEnum.Enum1())(v.value0));
         };
-        throw new Error("Failed pattern match at Data.Enum line 92, column 1 - line 92, column 54: " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Data.Enum line 80, column 1 - line 80, column 54: " + [ v.constructor.name ]);
     }, function (v) {
         if (v instanceof Data_Maybe.Nothing) {
             return Data_Maybe.Just.create(new Data_Maybe.Just(Data_Bounded.bottom(dictBoundedEnum.Bounded0())));
@@ -153,7 +153,7 @@ var enumMaybe = function (dictBoundedEnum) {
         if (v instanceof Data_Maybe.Just) {
             return Data_Functor.map(Data_Maybe.functorMaybe)(Data_Maybe.Just.create)(succ(dictBoundedEnum.Enum1())(v.value0));
         };
-        throw new Error("Failed pattern match at Data.Enum line 92, column 1 - line 92, column 54: " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Data.Enum line 80, column 1 - line 80, column 54: " + [ v.constructor.name ]);
     });
 };
 var enumInt = new Enum(function () {
@@ -216,7 +216,7 @@ var enumEither = function (dictBoundedEnum) {
                     return Data_Maybe.Just.create(Data_Either.Right.create($105));
                 })(pred(dictBoundedEnum1.Enum1())(v.value0));
             };
-            throw new Error("Failed pattern match at Data.Enum line 98, column 1 - line 98, column 75: " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Data.Enum line 86, column 1 - line 86, column 75: " + [ v.constructor.name ]);
         }, function (v) {
             if (v instanceof Data_Either.Left) {
                 return Data_Maybe.maybe(Data_Maybe.Just.create(new Data_Either.Right(Data_Bounded.bottom(dictBoundedEnum1.Bounded0()))))(function ($106) {
@@ -228,7 +228,7 @@ var enumEither = function (dictBoundedEnum) {
                     return Data_Maybe.Just.create(Data_Either.Right.create($107));
                 })(succ(dictBoundedEnum1.Enum1())(v.value0));
             };
-            throw new Error("Failed pattern match at Data.Enum line 98, column 1 - line 98, column 75: " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Data.Enum line 86, column 1 - line 86, column 75: " + [ v.constructor.name ]);
         });
     };
 };
@@ -281,7 +281,7 @@ var defaultToEnum = function (dictBounded) {
             if (Data_Boolean.otherwise) {
                 return Control_Bind.bind(Data_Maybe.bindMaybe)(defaultToEnum(dictBounded)(dictEnum)(n - 1 | 0))(succ(dictEnum));
             };
-            throw new Error("Failed pattern match at Data.Enum line 251, column 1 - line 251, column 65: " + [ n.constructor.name ]);
+            throw new Error("Failed pattern match at Data.Enum line 239, column 1 - line 239, column 65: " + [ n.constructor.name ]);
         };
     };
 };
@@ -375,7 +375,7 @@ var boundedEnumOrdering = new BoundedEnum(function () {
     if (v instanceof Data_Ordering.GT) {
         return 2;
     };
-    throw new Error("Failed pattern match at Data.Enum line 200, column 1 - line 200, column 53: " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Data.Enum line 188, column 1 - line 188, column 53: " + [ v.constructor.name ]);
 }, function (v) {
     if (v === 0) {
         return new Data_Maybe.Just(Data_Ordering.LT.value);
@@ -400,7 +400,7 @@ var boundedEnumMaybe = function (dictBoundedEnum) {
         if (v instanceof Data_Maybe.Just) {
             return fromEnum(dictBoundedEnum)(v.value0) + 1 | 0;
         };
-        throw new Error("Failed pattern match at Data.Enum line 210, column 1 - line 210, column 68: " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Data.Enum line 198, column 1 - line 198, column 68: " + [ v.constructor.name ]);
     }, function (v) {
         if (v === 0) {
             return Control_Applicative.pure(Data_Maybe.applicativeMaybe)(Data_Maybe.Nothing.value);
@@ -421,7 +421,7 @@ var boundedEnumEither = function (dictBoundedEnum) {
             if (v instanceof Data_Either.Right) {
                 return fromEnum(dictBoundedEnum1)(v.value0) + Data_Newtype.unwrap(newtypeCardinality)(cardinality(dictBoundedEnum)) | 0;
             };
-            throw new Error("Failed pattern match at Data.Enum line 217, column 1 - line 217, column 89: " + [ v.constructor.name ]);
+            throw new Error("Failed pattern match at Data.Enum line 205, column 1 - line 205, column 89: " + [ v.constructor.name ]);
         }, function (n) {
             var to = function (v) {
                 if (n >= 0 && n < v) {
@@ -430,7 +430,7 @@ var boundedEnumEither = function (dictBoundedEnum) {
                 if (Data_Boolean.otherwise) {
                     return Data_Functor.map(Data_Maybe.functorMaybe)(Data_Either.Right.create)(toEnum(dictBoundedEnum1)(n - v | 0));
                 };
-                throw new Error("Failed pattern match at Data.Enum line 224, column 5 - line 224, column 46: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Enum line 212, column 5 - line 212, column 46: " + [ v.constructor.name ]);
             };
             return to(cardinality(dictBoundedEnum));
         });
@@ -452,7 +452,7 @@ var boundedEnumBoolean = new BoundedEnum(function () {
     if (v) {
         return 1;
     };
-    throw new Error("Failed pattern match at Data.Enum line 181, column 1 - line 181, column 51: " + [ v.constructor.name ]);
+    throw new Error("Failed pattern match at Data.Enum line 169, column 1 - line 169, column 51: " + [ v.constructor.name ]);
 }, function (v) {
     if (v === 0) {
         return new Data_Maybe.Just(false);

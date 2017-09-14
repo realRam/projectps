@@ -52,6 +52,14 @@ var updateAtIndices = function (dictFoldable) {
     };
 };
 var updateAt = $foreign._updateAt(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
+var unzip = $foreign["uncons'"](function (v) {
+    return new Data_Tuple.Tuple([  ], [  ]);
+})(function (v) {
+    return function (ts) {
+        var v1 = unzip(ts);
+        return new Data_Tuple.Tuple($foreign.cons(v.value0)(v1.value0), $foreign.cons(v.value1)(v1.value1));
+    };
+});
 var unsafeIndex = function (dictPartial) {
     return $foreign.unsafeIndexImpl;
 };
@@ -73,14 +81,9 @@ var toUnfoldable = function (dictUnfoldable) {
             if (Data_Boolean.otherwise) {
                 return Data_Maybe.Nothing.value;
             };
-            throw new Error("Failed pattern match at Data.Array line 139, column 3 - line 141, column 26: " + [ i.constructor.name ]);
+            throw new Error("Failed pattern match at Data.Array line 137, column 3 - line 139, column 26: " + [ i.constructor.name ]);
         };
         return Data_Unfoldable.unfoldr(dictUnfoldable)(f)(0);
-    };
-};
-var takeEnd = function (n) {
-    return function (xs) {
-        return $foreign.drop($foreign.length(xs) - n | 0)(xs);
     };
 };
 var tail = $foreign["uncons'"](Data_Function["const"](Data_Maybe.Nothing.value))(function (v) {
@@ -102,7 +105,7 @@ var sortBy = function (comp) {
                 if (v instanceof Data_Ordering.LT) {
                     return -1 | 0;
                 };
-                throw new Error("Failed pattern match at Data.Array line 477, column 15 - line 482, column 1: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Array line 475, column 15 - line 480, column 1: " + [ v.constructor.name ]);
             };
         };
         return $foreign.sortImpl(comp$prime)(xs);
@@ -135,7 +138,7 @@ var nubBy = function (eq) {
         if (v instanceof Data_Maybe.Nothing) {
             return [  ];
         };
-        throw new Error("Failed pattern match at Data.Array line 594, column 3 - line 596, column 18: " + [ v.constructor.name ]);
+        throw new Error("Failed pattern match at Data.Array line 583, column 3 - line 585, column 18: " + [ v.constructor.name ]);
     };
 };
 var nub = function (dictEq) {
@@ -183,7 +186,7 @@ var init = function (xs) {
     if (Data_Boolean.otherwise) {
         return new Data_Maybe.Just($foreign.slice(0)($foreign.length(xs) - 1 | 0)(xs));
     };
-    throw new Error("Failed pattern match at Data.Array line 251, column 1 - line 251, column 45: " + [ xs.constructor.name ]);
+    throw new Error("Failed pattern match at Data.Array line 249, column 1 - line 249, column 45: " + [ xs.constructor.name ]);
 };
 var index = $foreign.indexImpl(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 var last = function (xs) {
@@ -217,8 +220,8 @@ var span = function (p) {
             function $tco_loop(i) {
                 var v = index(arr)(i);
                 if (v instanceof Data_Maybe.Just) {
-                    var $64 = p(v.value0);
-                    if ($64) {
+                    var $66 = p(v.value0);
+                    if ($66) {
                         $copy_i = i + 1 | 0;
                         return;
                     };
@@ -229,7 +232,7 @@ var span = function (p) {
                     $tco_done = true;
                     return Data_Maybe.Nothing.value;
                 };
-                throw new Error("Failed pattern match at Data.Array line 552, column 5 - line 554, column 25: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Array line 541, column 5 - line 543, column 25: " + [ v.constructor.name ]);
             };
             while (!$tco_done) {
                 $tco_result = $tco_loop($copy_i);
@@ -255,31 +258,13 @@ var span = function (p) {
                 rest: [  ]
             };
         };
-        throw new Error("Failed pattern match at Data.Array line 539, column 3 - line 545, column 30: " + [ breakIndex.constructor.name ]);
+        throw new Error("Failed pattern match at Data.Array line 528, column 3 - line 534, column 30: " + [ breakIndex.constructor.name ]);
     };
 };
 var takeWhile = function (p) {
     return function (xs) {
         return (span(p)(xs)).init;
     };
-};
-var unzip = function (xs) {
-    return Control_Monad_ST.pureST(function __do() {
-        var v = Data_Array_ST.emptySTArray();
-        var v1 = Data_Array_ST.emptySTArray();
-        var v2 = Data_Array_ST_Iterator.iterator(function (v2) {
-            return index(xs)(v2);
-        })();
-        Data_Array_ST_Iterator.iterate(v2)(function (v3) {
-            return function __do() {
-                Data_Functor["void"](Control_Monad_Eff.functorEff)(Data_Array_ST.pushSTArray(v)(v3.value0))();
-                return Data_Functor["void"](Control_Monad_Eff.functorEff)(Data_Array_ST.pushSTArray(v1)(v3.value1))();
-            };
-        })();
-        var v3 = Data_Array_ST.unsafeFreeze(v)();
-        var v4 = Data_Array_ST.unsafeFreeze(v1)();
-        return new Data_Tuple.Tuple(v3, v4);
-    });
 };
 var head = function (xs) {
     return index(xs)(0);
@@ -309,8 +294,8 @@ var group = function (dictEq) {
     };
 };
 var group$prime = function (dictOrd) {
-    return function ($93) {
-        return group(dictOrd.Eq0())(sort(dictOrd)($93));
+    return function ($87) {
+        return group(dictOrd.Eq0())(sort(dictOrd)($87));
     };
 };
 var fromFoldable = function (dictFoldable) {
@@ -333,7 +318,7 @@ var foldRecM = function (dictMonadRec) {
                                 }));
                             });
                         };
-                        throw new Error("Failed pattern match at Data.Array line 704, column 3 - line 708, column 42: " + [ res.constructor.name, i.constructor.name ]);
+                        throw new Error("Failed pattern match at Data.Array line 684, column 3 - line 688, column 42: " + [ res.constructor.name, i.constructor.name ]);
                     };
                 };
                 return Control_Monad_Rec_Class.tailRecM2(dictMonadRec)(go)(a)(0);
@@ -404,11 +389,6 @@ var dropWhile = function (p) {
         return (span(p)(xs)).rest;
     };
 };
-var dropEnd = function (n) {
-    return function (xs) {
-        return $foreign.take($foreign.length(xs) - n | 0)(xs);
-    };
-};
 var deleteAt = $foreign._deleteAt(Data_Maybe.Just.create)(Data_Maybe.Nothing.value);
 var deleteBy = function (v) {
     return function (v1) {
@@ -440,13 +420,13 @@ var difference = function (dictEq) {
 };
 var concatMap = Data_Function.flip(Control_Bind.bind(Control_Bind.bindArray));
 var mapMaybe = function (f) {
-    return concatMap(function ($94) {
-        return Data_Maybe.maybe([  ])(singleton)(f($94));
+    return concatMap(function ($88) {
+        return Data_Maybe.maybe([  ])(singleton)(f($88));
     });
 };
 var filterA = function (dictApplicative) {
     return function (p) {
-        return function ($95) {
+        return function ($89) {
             return Data_Functor.map((dictApplicative.Apply0()).Functor0())(mapMaybe(function (v) {
                 if (v.value1) {
                     return new Data_Maybe.Just(v.value0);
@@ -454,7 +434,7 @@ var filterA = function (dictApplicative) {
                 return Data_Maybe.Nothing.value;
             }))(Data_Traversable.traverse(Data_Traversable.traversableArray)(dictApplicative)(function (x) {
                 return Data_Functor.map((dictApplicative.Apply0()).Functor0())(Data_Tuple.Tuple.create(x))(p(x));
-            })($95));
+            })($89));
         };
     };
 };
@@ -470,7 +450,7 @@ var alterAt = function (i) {
                 if (v instanceof Data_Maybe.Just) {
                     return updateAt(i)(v.value0)(xs);
                 };
-                throw new Error("Failed pattern match at Data.Array line 392, column 10 - line 394, column 32: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Array line 390, column 10 - line 392, column 32: " + [ v.constructor.name ]);
             };
             return Data_Maybe.maybe(Data_Maybe.Nothing.value)(go)(index(xs)(i));
         };
@@ -484,7 +464,6 @@ module.exports = {
     deleteAt: deleteAt, 
     deleteBy: deleteBy, 
     difference: difference, 
-    dropEnd: dropEnd, 
     dropWhile: dropWhile, 
     elemIndex: elemIndex, 
     elemLastIndex: elemLastIndex, 
@@ -521,7 +500,6 @@ module.exports = {
     sortWith: sortWith, 
     span: span, 
     tail: tail, 
-    takeEnd: takeEnd, 
     takeWhile: takeWhile, 
     toUnfoldable: toUnfoldable, 
     uncons: uncons, 

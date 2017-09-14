@@ -79,10 +79,8 @@ module Data.Array
   , sortWith
   , slice
   , take
-  , takeEnd
   , takeWhile
   , drop
-  , dropEnd
   , dropWhile
   , span
   , group
@@ -497,11 +495,6 @@ foreign import slice :: forall a. Int -> Int -> Array a -> Array a
 -- | array.
 foreign import take :: forall a. Int -> Array a -> Array a
 
--- | Keep only a number of elements from the end of an array, creating a new
--- | array.
-takeEnd :: forall a. Int -> Array a -> Array a
-takeEnd n xs = drop (length xs - n) xs
-
 -- | Calculate the longest initial subarray for which all element satisfy the
 -- | specified predicate, creating a new array.
 takeWhile :: forall a. (a -> Boolean) -> Array a -> Array a
@@ -509,10 +502,6 @@ takeWhile p xs = (span p xs).init
 
 -- | Drop a number of elements from the start of an array, creating a new array.
 foreign import drop :: forall a. Int -> Array a -> Array a
-
--- | Drop a number of elements from the start of an array, creating a new array.
-dropEnd :: forall a. Int -> Array a -> Array a
-dropEnd n xs = take (length xs - n) xs
 
 -- | Remove the longest initial subarray for which all element satisfy the
 -- | specified predicate, creating a new array.
@@ -673,26 +662,17 @@ zipWithA
   -> m (Array c)
 zipWithA f xs ys = sequence (zipWith f xs ys)
 
--- | Takes two arrays and returns an array of corresponding pairs.
--- | If one input array is short, excess elements of the longer array are
+-- | Rakes two lists and returns a list of corresponding pairs.
+-- | If one input list is short, excess elements of the longer list are
 -- | discarded.
 zip :: forall a b. Array a -> Array b -> Array (Tuple a b)
 zip = zipWith Tuple
 
--- | Transforms an array of pairs into an array of first components and an
--- | array of second components.
+-- | Transforms a list of pairs into a list of first components and a list of
+-- | second components.
 unzip :: forall a b. Array (Tuple a b) -> Tuple (Array a) (Array b)
-unzip xs =
-  pureST do
-    fsts <- emptySTArray
-    snds <- emptySTArray
-    iter <- iterator (xs !! _)
-    iterate iter \(Tuple fst snd) -> do
-      void $ pushSTArray fsts fst
-      void $ pushSTArray snds snd
-    fsts' <- unsafeFreeze fsts
-    snds' <- unsafeFreeze snds
-    pure $ Tuple fsts' snds'
+unzip = uncons' (\_ -> Tuple [] []) \(Tuple a b) ts -> case unzip ts of
+  Tuple as bs -> Tuple (a : as) (b : bs)
 
 -- | Perform a fold using a monadic step function.
 foldM :: forall m a b. Monad m => (a -> b -> m a) -> a -> Array b -> m a

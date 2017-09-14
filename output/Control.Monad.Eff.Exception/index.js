@@ -27,6 +27,5 @@ module.exports = {
     catchException: $foreign.catchException, 
     error: $foreign.error, 
     message: $foreign.message, 
-    name: $foreign.name, 
     throwException: $foreign.throwException
 };

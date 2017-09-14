@@ -49,8 +49,8 @@ foreign import runSTArray
    . (forall h. Eff (st :: ST h | r) (STArray h a))
   -> Eff r (Array a)
 
--- | Perform an effect requiring a mutable array on a copy of an immutable array,
--- | safely returning the result as an immutable array.
+-- Perform an effect requiring a mutable array on a copy of an immutable array,
+-- safely returning the result as an immutable array.
 withArray
   :: forall a b r h
    . (STArray h a -> Eff (st :: ST h | r) b)
@@ -100,13 +100,11 @@ foreign import pokeSTArray
   :: forall a h r
    . STArray h a -> Int -> a -> Eff (st :: ST h | r) Boolean
 
--- | Append an element to the end of a mutable array. Returns the new length of
--- | the array.
+-- | Append an element to the end of a mutable array.
 pushSTArray :: forall a h r. STArray h a -> a -> Eff (st :: ST h | r) Int
 pushSTArray arr a = pushAllSTArray arr [a]
 
 -- | Append the values in an immutable array to the end of a mutable array.
--- | Returns the new length of the mutable array.
 foreign import pushAllSTArray
   :: forall a h r
    . STArray h a

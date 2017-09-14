@@ -39,7 +39,7 @@ var modifySTArray = function (xs) {
                 if (v instanceof Data_Maybe.Nothing) {
                     return false;
                 };
-                throw new Error("Failed pattern match at Data.Array.ST line 120, column 3 - line 122, column 26: " + [ v.constructor.name ]);
+                throw new Error("Failed pattern match at Data.Array.ST line 118, column 3 - line 120, column 26: " + [ v.constructor.name ]);
             };
         };
     };

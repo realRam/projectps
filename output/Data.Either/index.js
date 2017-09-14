@@ -15,7 +15,6 @@ var Data_Foldable = require("../Data.Foldable");
 var Data_Function = require("../Data.Function");
 var Data_Functor = require("../Data.Functor");
 var Data_Functor_Invariant = require("../Data.Functor.Invariant");
-var Data_Maybe = require("../Data.Maybe");
 var Data_Monoid = require("../Data.Monoid");
 var Data_Ord = require("../Data.Ord");
 var Data_Ordering = require("../Data.Ordering");
@@ -54,9 +53,6 @@ var showEither = function (dictShow) {
             throw new Error("Failed pattern match at Data.Either line 160, column 1 - line 160, column 61: " + [ v.constructor.name ]);
         });
     };
-};
-var note = function (a) {
-    return Data_Maybe.maybe(new Left(a))(Right.create);
 };
 var functorEither = new Data_Functor.Functor(function (v) {
     return function (v1) {
@@ -237,7 +233,6 @@ var either = function (v) {
         };
     };
 };
-var hush = either(Data_Function["const"](Data_Maybe.Nothing.value))(Data_Maybe.Just.create);
 var isLeft = either(Data_Function["const"](true))(Data_Function["const"](false));
 var isRight = either(Data_Function["const"](false))(Data_Function["const"](true));
 var choose = function (dictAlt) {
@@ -406,10 +401,8 @@ module.exports = {
     either: either, 
     fromLeft: fromLeft, 
     fromRight: fromRight, 
-    hush: hush, 
     isLeft: isLeft, 
     isRight: isRight, 
-    note: note, 
     functorEither: functorEither, 
     invariantEither: invariantEither, 
     bifunctorEither: bifunctorEither, 

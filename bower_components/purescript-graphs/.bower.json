@@ -1,0 +1,38 @@
+{
+  "name": "purescript-graphs",
+  "homepage": "https://github.com/purescript/purescript-graphs",
+  "authors": [
+    "Phil Freeman <paf31@cantab.net>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/purescript/purescript-graphs.git"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "output",
+    "test",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-sets": "^3.0.0",
+    "purescript-catenable-lists": "^4.0.0"
+  },
+  "devDependencies": {
+    "purescript-console": "^3.0.0"
+  },
+  "version": "3.0.0",
+  "_release": "3.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.0",
+    "commit": "46ed9d831026d561e27646fdcff99ddb1dcc3875"
+  },
+  "_source": "https://github.com/purescript/purescript-graphs.git",
+  "_target": "^3.0.0",
+  "_originalSource": "purescript-graphs"
+}
